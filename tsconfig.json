@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "moduleResolution": "node",
+		"outDir": "./output",
+    "strict": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"allowArbitraryExtensions": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+		"types": ["node"],
+		"lib": ["es2015"],
+    "removeComments": true,
+		"paths": {
+			"@root/*":        ["./src/*"],
+			"@util/*":        ["./src/utils/*"],
+			"@middleware/*": ["./src/middlewares/*"],
+			"@route/*":       ["./src/routes/*"],
+			"@model/*":       ["./src/models/*"]
+		},
+  },
+	"exclude": ["node_modules"],
+}
