@@ -10,7 +10,7 @@ import processCatchedError from "@middleware/process-catched-error.middleware.js
 import signUp from "./sign-up.route.js";
 import signIn from "./sign-in.route.js";
 import authorization from "./authorization.route.js";
-import createNewAccessToken from "./refresh-access-token.route.js";
+import refreshAccessToken from "./refresh-access-token.route.js";
 
 const multipartParser: Multer = multer();
 
@@ -36,7 +36,7 @@ export default {
 	],
 	createAccessToken: [
 		logIncomingRequestData,
-		createNewAccessToken,
+		refreshAccessToken,
 		processCatchedError
 	]
 } as const;

@@ -37,3 +37,5 @@ app.get("/user/refresh-access-token", ...userRoute.createAccessToken)
 app.use(_404_);
 
 export default app;
+
+// typescript#1!

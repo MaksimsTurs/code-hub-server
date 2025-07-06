@@ -43,5 +43,5 @@ export default async function signUp(request: Request, response: Response, next:
 	}
 
 	response.cookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, refreshToken, OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
-	response.status(NUMBER_CONST.HTTP_OK).send({...newAccount, accessToken });
+	response.status(NUMBER_CONST.HTTP_OK).send({ account: newAccount, accessToken });
 };

@@ -6,7 +6,7 @@ import getAccountById from "@util/get-account-by-id.util.js";
 import CodeHubProject from "@model/code-hub-project.model.js";
 
 export default async function(request: Request, response: Response, next: NextFunction): Promise<void> {
-	const [projectOwner, errorByGettingProjectOwner] = await getAccountById(response.locals.tokens.authToken._id);
+	const [projectOwner, errorByGettingProjectOwner] = await getAccountById(response.locals.tokens.accessJWTTToken._id);
 
 	if(errorByGettingProjectOwner) {
 		return next(errorByGettingProjectOwner);

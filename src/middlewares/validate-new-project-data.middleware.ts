@@ -7,7 +7,7 @@ import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
 const newProjectDataValidator = vine.compile(
 	vine.object({
 		name: vine.string().minLength(3).maxLength(20),
-		description: vine.string().maxLength(250),
+		description: vine.string().maxLength(250).optional(),
 		visibility: vine.string(),
 	})
 );

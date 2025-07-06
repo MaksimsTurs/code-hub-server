@@ -16,7 +16,6 @@ export default {
 	],
 	getAllProjects: [
 		logIncomingRequestData, 
-		authenticate,
 		getAllProjects, 
 		processCatchedError
 	]

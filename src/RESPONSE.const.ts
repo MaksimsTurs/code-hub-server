@@ -1,14 +1,14 @@
 export default {
 	//Client errors
-  400: (message?: string) => ({ code: 400, message: message || 'Bad Request!' }),
-  401: (message?: string) => ({ code: 401, message: message || 'Unauthorized!' }),
-  403: (message?: string) => ({ code: 403, message: message || 'Forbidden!' }),
-  404: (message?: string) => ({ code: 404, message: message || 'Not found!' }),
-  408: (message?: string) => ({ code: 408, message: message || 'Request timeout!' }),
-  409: (message?: string) => ({ code: 409, message: message || 'Conflict!' }),
-	422: (message?: string) => ({ code: 422, message: message || "Validation failure!" }),
-  429: (message?: string) => ({ code: 429, message: message || 'Too many requests!' }),
+  400: (message: string = "Bad Request!",           data?: any) => ({ ...data, code: 400, message: message }),
+  401: (message: string = "Unauthorized!",          data?: any) => ({ ...data, code: 401, message: message }),
+  403: (message: string = "Forbidden!",             data?: any) => ({ ...data, code: 403, message: message }),
+  404: (message: string = "Not found!"   ,          data?: any) => ({ ...data, code: 404, message: message }),
+  408: (message: string = "Request timeout!",       data?: any) => ({ ...data, code: 408, message: message }),
+  409: (message: string = "Conflict!",              data?: any) => ({ ...data, code: 409, message: message }),
+	422: (message: string = "Validation failure!",    data?: any) => ({ ...data, code: 422, message: message }),
+  429: (message: string = "Too many requests!",     data?: any) => ({ ...data, code: 429, message: message }),
   //Server errors
-  500: (message?: string) => ({ code: 500, message: message || 'Internal server error!' }),
-  503: (message?: string) => ({ code: 503, message: message || 'Service unavailable!' })
+  500: (message: string = "Internal server error!", data?: any) => ({ ...data, code: 500, message: message }),
+  503: (message: string = "Service unavailable!",   data?: any) => ({ ...data, code: 503, message: message })
 } as const;

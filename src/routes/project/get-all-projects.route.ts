@@ -5,34 +5,42 @@ import CodeHubProject from "@model/code-hub-project.model.js";
 
 import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
 import safeSyncCall from "@util/safe-sync-call/safe-sync-call.util.js";
+import verifyJWTToken from "@util/verify-jwt-token.util";
 
 import NUMBER_CONST from "@root/NUMBER.const.js";
+import STRING_CONST from "@root/STRING.const";
 
 export default async function getAllProjects(request: Request, response: Response<any, { accountData: TAccount | null }>, next: NextFunction): Promise<void> {
-	const [getAllProjectsFilter, errorByCreatingFilter] = safeSyncCall(function() {
-		const accountData: TAccount | null = response.locals.accountData;
+	const [accountId, errorByGettingAccountId] = safeSyncCall(function() {
+		const [refreshToken, errorByGettinRefreshToken] = verifyJWTToken<TAccount>(request.cookies[STRING_CONST.AUTH_REFRESH_TOKEN_KEY], process.env.CODE_HUB_REFRESH_SECRET!);
 
-		return !accountData ? 
-			{ visibility: "public" } :
-			{ 
-				$or: [
-					{ $and: [{ visibility: "protected", contributors: accountData._id }] }, 
-					{ $and: [{ visibility: "public" }] },
-					{ $and: [{ visibility: "private", owners: accountData._id }]}
-				] 
-			};
+		if(errorByGettinRefreshToken) {
+			throw errorByGettinRefreshToken;
+		}
+
+		return refreshToken?._id;
 	});
 
-	if(errorByCreatingFilter) {
-		next(errorByCreatingFilter);
+	if(errorByGettingAccountId) {
+		return next(errorByGettingAccountId);
 	}
 
 	const [codeHubProjects, errorByGettingCodeHubProjects] = await safeAsyncCall(async function() {
-		return (await CodeHubProject.find(getAllProjectsFilter!, { __v: false, owners: false, contributors: false, createdAt: false, updatedAt: false }));
+		const filters = !accountId? 
+			{ visibility: "public" } :
+			{ 
+				$or: [
+					{ $and: [{ visibility: "protected", contributors: accountId }] }, 
+					{ $and: [{ visibility: "public" }] },
+					{ $and: [{ visibility: "private", owners: accountId }]}
+				] 
+			};
+
+		return (await CodeHubProject.find(filters!, { __v: false, owners: false, contributors: false, createdAt: false, updatedAt: false }));
 	});
 
 	if(errorByGettingCodeHubProjects) {
-		next(errorByGettingCodeHubProjects);
+		return next(errorByGettingCodeHubProjects);
 	}
 
 	response.status(NUMBER_CONST.HTTP_OK).send(codeHubProjects);

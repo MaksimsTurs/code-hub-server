@@ -15,7 +15,7 @@ export default async function authenticate(request: Request, response: Response,
 	}
 
 	if(accessToken) {
-		response.locals.tokens = {...(response.locals?.tokens || {}), authToken: accessToken };
+		response.locals.tokens = {...(response.locals?.tokens || {}), accessJWTTToken: accessToken };
 
 		return next();
 	}

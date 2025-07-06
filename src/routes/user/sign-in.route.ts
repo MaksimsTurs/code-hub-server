@@ -47,5 +47,8 @@ export default async function signIn(request: Request, response: Response, next:
 	}
 
 	response.cookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, refreshToken, OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
-	response.status(NUMBER_CONST.HTTP_OK).send({ _id: existingAccount!._id, name: existingAccount!.name, avatar: existingAccount!.avatar, email: existingAccount!.email,  accessToken });
+	response.status(NUMBER_CONST.HTTP_OK).send({
+		account: { _id: existingAccount!._id, name: existingAccount!.name, avatar: existingAccount!.avatar, email: existingAccount!.email },
+		accessToken 
+	});
 };
