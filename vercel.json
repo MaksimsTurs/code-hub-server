@@ -1,6 +1,6 @@
 { 
 	"version": 2, 
 	"rewrites": [
-		{ "source": "/(.*)", "destination": "/output" }
+		{ "source": "/(.*)", "destination": "/output/index.js" }
 	] 
 }
