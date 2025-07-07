@@ -5,3 +5,4 @@ output
 .vscode
 tsconfig.tsbuildinfo
 bun.lockb
+*.txt

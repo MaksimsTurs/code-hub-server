@@ -1,10 +1,10 @@
 import type { Request, Response, NextFunction } from "express";
-import type { TValidationErrorsObject } from "@root/utils/create-validation-errors-object/create-validation-errors-object.util.type";
+import type { TValidationErrorsObject } from "@root/utils/create-validation-errors-object/create-validation-errors-object.util.type.js";
 
 import { errors } from "@vinejs/vine";
 
 import logger from "@util/logger/logger.util.js";
-import createValidationErrorsObject from "@util/create-validation-errors-object/create-validation-errors-object.util";
+import createValidationErrorsObject from "@util/create-validation-errors-object/create-validation-errors-object.util.js";
 import HandledAPIError from "@util/Handled-API-Error.util.js";
 
 import NUMBER_CONST from "@root/NUMBER.const.js";

@@ -1,6 +1,6 @@
 {
   "name": "code-hub-server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./output/index.js",
   "type": "module",
   "scripts": {
