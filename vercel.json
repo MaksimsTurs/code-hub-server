@@ -7,10 +7,5 @@
       "config": { "includeFiles": ["output/**"] }
     }
   ],
-	"routes": [
-    {
-      "src": "/(.*)",
-      "dest": "output/index.js"
-    }
-  ]
+	"routes": [{ "src": "/(.*)", "dest": "output/index.js" }]
 }
