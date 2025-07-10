@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run prod:build",
+  "outputDirectory": "/output/index.js",
+  "rewrites": [
+  	{
+    	"source": "/(.*)",
+    	"destination": "/output/index.js"
+    }
+  ]
+}
