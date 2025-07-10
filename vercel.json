@@ -1,10 +1,17 @@
 {
   "buildCommand": "npm run prod:build",
-  "outputDirectory": "/output/index.js",
+  "outputDirectory": "output/index.js",
+  "builds": [
+    {
+      "src": "output/index.js",
+      "use": "@vercel/node",
+      "config": { "includeFiles": ["dist/**"] }
+    }
+  ],
   "rewrites": [
   	{
     	"source": "/(.*)",
-    	"destination": "/output/index.js"
+    	"destination": "output/index.js"
     }
   ]
 }
