@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "prod:build": "tsc --project tsconfig.json",
-    "start": "node --loader ./MODULE_LOADER.mjs ./output/index.js"
+    "start": "node --no-warnings --experimental-modules --es-module-specifier-resolution=node --loader ./MODULE_LOADER.mjs ./output/index.js"
   },
   "license": "ISC",
   "devDependencies": {
