@@ -1,11 +1,9 @@
 {
   "name": "code-hub-server",
   "version": "0.0.5",
-  "main": "./output/index.js",
   "type": "module",
   "scripts": {
 		"dev": "nodemon",
-		"start": "nodemon ./src/index.ts",
     "prod:build": "tsc --project tsconfig.json",
     "prod:start": "node --no-warnings --experimental-modules --es-module-specifier-resolution=node --loader ./MODULE_LOADER.mjs ./output/index.js"
   },
