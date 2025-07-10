@@ -5,6 +5,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
+import logger from "@util/logger/logger.util";
+
 import connectToMongoDb from "@root/configuration/connect-to-mongodb.config.js";
 import startListeningServer from "@root/configuration/start-listening-server.config.js";
 
@@ -25,6 +27,8 @@ app
 	.use(express.urlencoded({ extended: true }))
 	.use(cookieParser())
 	.listen(process.env.SERVER_DEV_PORT, startListeningServer);
+
+app.get("/", () => logger.info("Server is started!"));
 
 app.post("/project/create", ...projectRoute.create);
 app.get("/project/all",     ...projectRoute.getAllProjects);
