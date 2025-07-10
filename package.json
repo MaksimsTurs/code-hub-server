@@ -4,10 +4,10 @@
   "main": "./output/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon",
+		"dev": "nodemon",
+		"start": "nodemon",
     "prod:build": "tsc --project tsconfig.json",
-    "prod:start": "node --no-warnings --experimental-modules --es-module-specifier-resolution=node --loader ./MODULE_LOADER.mjs ./output/index.js",
-		"start": "npx nodemon ./src/index.ts"
+    "prod:start": "node --no-warnings --experimental-modules --es-module-specifier-resolution=node --loader ./MODULE_LOADER.mjs ./output/index.js"
   },
   "license": "ISC",
   "devDependencies": {
