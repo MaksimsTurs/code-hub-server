@@ -1,6 +1,4 @@
 {
-  "buildCommand": "npm run prod:build",
-  "outputDirectory": "output/index.js",
   "builds": [
     {
       "src": "output/index.js",
