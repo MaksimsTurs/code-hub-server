@@ -1,16 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.ts",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["output/**"] }
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "output/index.js"
+      "dest": "index.ts"
     }
   ]
 }
