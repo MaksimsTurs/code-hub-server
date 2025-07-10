@@ -22,15 +22,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
-import logger from "./utils/logger/logger.util";
-
 import connectToMongoDb from "./configuration/connect-to-mongodb.config.js";
 import startListeningServer from "./configuration/start-listening-server.config.js";
 
 import _404_ from "./routes/404.route.js";
 
-import userRoute from "@route/user/user.route.js";
-import projectRoute from "@route/project/project.route.js";
+import userRoute from "./routes/user/user.route.js";
+import projectRoute from "./routes/project/project.route.js";
 
 const app: Express = express();
 
@@ -45,7 +43,7 @@ app
 	.use(cookieParser())
 	.listen(process.env.SERVER_DEV_PORT, startListeningServer);
 
-app.get("/", () => logger.info("Server is started!"));
+app.get("/", (_request, response) => { response.status(200).send({ message: "Success!" }) });
 
 app.post("/project/create", ...projectRoute.create);
 app.get("/project/all",     ...projectRoute.getAllProjects);
