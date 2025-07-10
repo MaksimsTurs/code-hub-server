@@ -1,11 +1,26 @@
+// import type { Multer } from "multer";
+
+// import multer from "multer";
+
+// import logIncomingRequestData from "@middleware/log-incoming-request-data.middleware.js";
+// import validateSignUpData from "@middleware/validate-sign-up-data.middleware.js";
+// import validateSignInData from "@middleware/validate-sign-in-data.middleware.js";
+// import processCatchedError from "@middleware/process-catched-error.middleware.js";
+
+// import signUp from "./sign-up.route.js";
+// import signIn from "./sign-in.route.js";
+// import authorization from "./authorization.route.js";
+// import refreshAccessToken from "./refresh-access-token.route.js";
+// import getAccountById from "./get-account-by-id.route.js";
+
 import type { Multer } from "multer";
 
 import multer from "multer";
 
-import logIncomingRequestData from "@middleware/log-incoming-request-data.middleware.js";
-import validateSignUpData from "@middleware/validate-sign-up-data.middleware.js";
-import validateSignInData from "@middleware/validate-sign-in-data.middleware.js";
-import processCatchedError from "@middleware/process-catched-error.middleware.js";
+import logIncomingRequestData from "../../middlewares/log-incoming-request-data.middleware.js";
+import validateSignUpData from "../../middlewares/validate-sign-up-data.middleware.js";
+import validateSignInData from "../../middlewares/validate-sign-in-data.middleware.js";
+import processCatchedError from "../../middlewares/process-catched-error.middleware.js";
 
 import signUp from "./sign-up.route.js";
 import signIn from "./sign-in.route.js";

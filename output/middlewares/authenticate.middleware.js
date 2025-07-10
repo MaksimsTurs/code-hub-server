@@ -1,7 +1,7 @@
-import NUMBER_CONST from "@root/NUMBER.const.js";
-import HandledAPIError from "@util/Handled-API-Error.util.js";
-import verifyJWTToken from "@util/verify-jwt-token.util.js";
-import getAccessToken from "@util/get-access-token.util.js";
+import NUMBER_CONST from "../NUMBER.const.js";
+import HandledAPIError from "../utils/Handled-API-Error.util.js";
+import verifyJWTToken from "../utils/verify-jwt-token.util.js";
+import getAccessToken from "../utils/get-access-token.util.js";
 export default async function authenticate(request, response, next) {
     const [accessToken, errorByVeryfyingToken] = verifyJWTToken(getAccessToken(request.headers), process.env.CODE_HUB_ACCESS_SECRET);
     if (errorByVeryfyingToken) {

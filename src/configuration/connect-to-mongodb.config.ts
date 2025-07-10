@@ -1,6 +1,6 @@
 import { connect } from "mongoose";
 
-import logger from "@util/logger/logger.util.js";
+import logger from "../utils/logger/logger.util.js";
 
 export default async function connectToMongoDb(): Promise<void> {
 	logger.info(`Connecting to MongoDB, current mode "${process.env.CODE_HUB_MODE}".`);

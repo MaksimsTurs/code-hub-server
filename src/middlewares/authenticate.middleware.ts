@@ -1,11 +1,20 @@
+// import type { Response, Request, NextFunction } from "express";
+// import type { TJWTAccountToken } from "@root/global.type.js";
+
+// import NUMBER_CONST from "@root/NUMBER.const.js";
+
+// import HandledAPIError from "@util/Handled-API-Error.util.js";
+// import verifyJWTToken from "@util/verify-jwt-token.util.js";
+// import getAccessToken from "@util/get-access-token.util.js";
+
 import type { Response, Request, NextFunction } from "express";
-import type { TJWTAccountToken } from "@root/global.type.js";
+import type { TJWTAccountToken } from "../global.type.js";
 
-import NUMBER_CONST from "@root/NUMBER.const.js";
+import NUMBER_CONST from "../NUMBER.const.js";
 
-import HandledAPIError from "@util/Handled-API-Error.util.js";
-import verifyJWTToken from "@util/verify-jwt-token.util.js";
-import getAccessToken from "@util/get-access-token.util.js";
+import HandledAPIError from "../utils/Handled-API-Error.util.js";
+import verifyJWTToken from "../utils/verify-jwt-token.util.js";
+import getAccessToken from "../utils/get-access-token.util.js";
 
 export default async function authenticate(request: Request, response: Response, next: NextFunction): Promise<void> {
 	const [accessToken, errorByVeryfyingToken] = verifyJWTToken<TJWTAccountToken>(getAccessToken(request.headers), process.env.CODE_HUB_ACCESS_SECRET!);

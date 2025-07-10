@@ -1,9 +1,16 @@
+// import type { Request, Response, NextFunction } from "express";
+
+// import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
+// import getAccountById from "@util/get-account-by-id.util.js";
+
+// import CodeHubProject from "@model/code-hub-project.model.js";
+
 import type { Request, Response, NextFunction } from "express";
 
-import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
-import getAccountById from "@util/get-account-by-id.util.js";
+import safeAsyncCall from "../../utils/safe-async-call/safe-async-call.util.js";
+import getAccountById from "../../utils/get-account-by-id.util.js";
 
-import CodeHubProject from "@model/code-hub-project.model.js";
+import CodeHubProject from "../../models/code-hub-project.model.js";
 
 export default async function(request: Request, response: Response, next: NextFunction): Promise<void> {
 	const [projectOwner, errorByGettingProjectOwner] = await getAccountById(response.locals.tokens.accessJWTTToken._id);

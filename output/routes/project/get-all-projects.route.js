@@ -1,9 +1,9 @@
-import CodeHubProject from "@model/code-hub-project.model.js";
-import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
-import safeSyncCall from "@util/safe-sync-call/safe-sync-call.util.js";
-import verifyJWTToken from "@util/verify-jwt-token.util.js";
-import NUMBER_CONST from "@root/NUMBER.const.js";
-import STRING_CONST from "@root/STRING.const.js";
+import CodeHubProject from "../../models/code-hub-project.model.js";
+import safeAsyncCall from "../../utils/safe-async-call/safe-async-call.util.js";
+import safeSyncCall from "../../utils/safe-sync-call/safe-sync-call.util.js";
+import verifyJWTToken from "../../utils/verify-jwt-token.util.js";
+import NUMBER_CONST from "../../NUMBER.const.js";
+import STRING_CONST from "../../STRING.const.js";
 export default async function getAllProjects(request, response, next) {
     const [accountId, errorByGettingAccountId] = safeSyncCall(function () {
         const [refreshToken, errorByGettinRefreshToken] = verifyJWTToken(request.cookies[STRING_CONST.AUTH_REFRESH_TOKEN_KEY], process.env.CODE_HUB_REFRESH_SECRET);

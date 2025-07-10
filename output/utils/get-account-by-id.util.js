@@ -1,8 +1,8 @@
 import { isValidObjectId, Types } from "mongoose";
-import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
-import HandledAPIError from "@util/Handled-API-Error.util.js";
-import AccountModel from "@model/account.model.js";
-import NUMBER_CONST from "@root/NUMBER.const.js";
+import safeAsyncCall from "./safe-async-call/safe-async-call.util.js";
+import HandledAPIError from "./Handled-API-Error.util.js";
+import AccountModel from "../models/account.model.js";
+import NUMBER_CONST from "../NUMBER.const.js";
 export default async function getAccountById(_id, projection, queryOptions) {
     return safeAsyncCall(async function () {
         _id = typeof _id === "string" ? new Types.ObjectId(_id) : _id;

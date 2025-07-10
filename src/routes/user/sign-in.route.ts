@@ -1,17 +1,32 @@
+// import type { Request, Response, NextFunction } from "express";
+
+// import bcrypt from "bcrypt";
+
+// import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
+// import createJWTAccessToken from "@util/create-jwt-access-token.util.js";
+// import createJWTRefreshToken from "@util/create-jwt-refresh-token.util.js";
+// import HandledAPIError from "@util/Handled-API-Error.util.js";
+
+// import AccountModel from "@model/account.model.js";
+
+// import NUMBER_CONST from "@root/NUMBER.const.js";
+// import STRING_CONST from "@root/STRING.const.js";
+// import OBJECT_CONST from "@root/OBJECT.const.js";
+
 import type { Request, Response, NextFunction } from "express";
 
 import bcrypt from "bcrypt";
 
-import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
-import createJWTAccessToken from "@util/create-jwt-access-token.util.js";
-import createJWTRefreshToken from "@util/create-jwt-refresh-token.util.js";
-import HandledAPIError from "@util/Handled-API-Error.util.js";
+import safeAsyncCall from "../../utils/safe-async-call/safe-async-call.util.js";
+import createJWTAccessToken from "../../utils/create-jwt-access-token.util.js";
+import createJWTRefreshToken from "../../utils/create-jwt-refresh-token.util.js";
+import HandledAPIError from "../../utils/Handled-API-Error.util.js";
 
-import AccountModel from "@model/account.model.js";
+import AccountModel from "../../models/account.model.js";
 
-import NUMBER_CONST from "@root/NUMBER.const.js";
-import STRING_CONST from "@root/STRING.const.js";
-import OBJECT_CONST from "@root/OBJECT.const.js";
+import NUMBER_CONST from "../../NUMBER.const.js";
+import STRING_CONST from "../../STRING.const.js";
+import OBJECT_CONST from "../../OBJECT.const.js";
 
 export default async function signIn(request: Request, response: Response, next: NextFunction): Promise<void> {
 	const [existingAccount, errorByVeryfiyngData] = await safeAsyncCall(async function() {

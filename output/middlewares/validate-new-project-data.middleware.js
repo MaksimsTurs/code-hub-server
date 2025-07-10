@@ -1,5 +1,5 @@
 import vine, { SimpleMessagesProvider } from "@vinejs/vine";
-import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
+import safeAsyncCall from "../utils/safe-async-call/safe-async-call.util.js";
 const newProjectDataValidator = vine.compile(vine.object({
     name: vine.string().minLength(3).maxLength(20),
     description: vine.string().maxLength(250).optional(),

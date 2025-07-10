@@ -1,14 +1,26 @@
+// import type { Response, Request, NextFunction } from "express";
+// import type { TAccount } from "@model/account.model.type.js";
+
+// import CodeHubProject from "@model/code-hub-project.model.js";
+
+// import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
+// import safeSyncCall from "@util/safe-sync-call/safe-sync-call.util.js";
+// import verifyJWTToken from "@util/verify-jwt-token.util.js";
+
+// import NUMBER_CONST from "@root/NUMBER.const.js";
+// import STRING_CONST from "@root/STRING.const.js";
+
 import type { Response, Request, NextFunction } from "express";
-import type { TAccount } from "@model/account.model.type.js";
+import type { TAccount } from "../../models/account.model.type.js";
 
-import CodeHubProject from "@model/code-hub-project.model.js";
+import CodeHubProject from "../../models/code-hub-project.model.js";
 
-import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
-import safeSyncCall from "@util/safe-sync-call/safe-sync-call.util.js";
-import verifyJWTToken from "@util/verify-jwt-token.util.js";
+import safeAsyncCall from "../../utils/safe-async-call/safe-async-call.util.js";
+import safeSyncCall from "../../utils/safe-sync-call/safe-sync-call.util.js";
+import verifyJWTToken from "../../utils/verify-jwt-token.util.js";
 
-import NUMBER_CONST from "@root/NUMBER.const.js";
-import STRING_CONST from "@root/STRING.const.js";
+import NUMBER_CONST from "../../NUMBER.const.js";
+import STRING_CONST from "../../STRING.const.js";
 
 export default async function getAllProjects(request: Request, response: Response<any, { accountData: TAccount | null }>, next: NextFunction): Promise<void> {
 	const [accountId, errorByGettingAccountId] = safeSyncCall(function() {

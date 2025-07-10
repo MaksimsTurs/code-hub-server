@@ -1,5 +1,5 @@
 import vine, { SimpleMessagesProvider } from "@vinejs/vine";
-import safeAsyncCall from "@util/safe-async-call/safe-async-call.util.js";
+import safeAsyncCall from "../utils/safe-async-call/safe-async-call.util.js";
 const signUpValidator = vine.compile(vine.object({
     name: vine.string().maxLength(20).regex(/[A-Za-z0-9_-]/),
     email: vine.string().email().regex(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/),

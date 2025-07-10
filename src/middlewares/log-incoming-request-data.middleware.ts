@@ -1,6 +1,10 @@
+// import type { Request, Response, NextFunction } from "express";
+
+// import logger from "@util/logger/logger.util.js";
+
 import type { Request, Response, NextFunction } from "express";
 
-import logger from "@util/logger/logger.util.js";
+import logger from "../utils/logger/logger.util.js";
 
 export default function logIncomingRequestData(request: Request, _response: Response, next: NextFunction): void {
 	logger.info(`Request on path "${request.url}" from "${request.headers.referer}".`);

@@ -1,8 +1,8 @@
-import verifyJWTToken from "@util/verify-jwt-token.util.js";
-import createJWTAccessToken from "@util/create-jwt-access-token.util.js";
-import HandledAPIError from "@util/Handled-API-Error.util.js";
-import NUMBER_CONST from "@root/NUMBER.const.js";
-import STRING_CONST from "@root/STRING.const.js";
+import verifyJWTToken from "../../utils/verify-jwt-token.util.js";
+import createJWTAccessToken from "../../utils/create-jwt-access-token.util.js";
+import HandledAPIError from "../../utils/Handled-API-Error.util.js";
+import NUMBER_CONST from "../../NUMBER.const.js";
+import STRING_CONST from "../../STRING.const.js";
 export default function createNewAccessToken(request, response, next) {
     const [refreshToken, errorByVerifyingToken] = verifyJWTToken(request.cookies[STRING_CONST.AUTH_REFRESH_TOKEN_KEY], process.env.CODE_HUB_REFRESH_SECRET);
     if (errorByVerifyingToken) {

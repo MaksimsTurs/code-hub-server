@@ -1,3 +1,20 @@
+// import type { Express } from "express";
+
+// import express from "express";
+// import cors from "cors";
+// import dotenv from "dotenv";
+// import cookieParser from "cookie-parser";
+
+// import logger from "@util/logger/logger.util";
+
+// import connectToMongoDb from "@root/configuration/connect-to-mongodb.config.js";
+// import startListeningServer from "@root/configuration/start-listening-server.config.js";
+
+// import _404_ from "@route/404.route.js";
+
+// import userRoute from "@route/user/user.route.js";
+// import projectRoute from "@route/project/project.route.js";
+
 import type { Express } from "express";
 
 import express from "express";
@@ -5,12 +22,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
-import logger from "@util/logger/logger.util";
+import logger from "./utils/logger/logger.util";
 
-import connectToMongoDb from "@root/configuration/connect-to-mongodb.config.js";
-import startListeningServer from "@root/configuration/start-listening-server.config.js";
+import connectToMongoDb from "./configuration/connect-to-mongodb.config.js";
+import startListeningServer from "./configuration/start-listening-server.config.js";
 
-import _404_ from "@route/404.route.js";
+import _404_ from "./routes/404.route.js";
 
 import userRoute from "@route/user/user.route.js";
 import projectRoute from "@route/project/project.route.js";
