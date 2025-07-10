@@ -1,11 +1,5 @@
 {
-  "builds": [
-    {
-      "src": "output/index.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["output/**"] }
-    }
-  ],
+	"version": 2,
   "rewrites": [
   	{
     	"source": "/(.*)",
