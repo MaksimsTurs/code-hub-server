@@ -5,7 +5,7 @@ export type TAccount = {
 	name: string
 	email: string
 	avatar: string
-	codeHubs: Types.ObjectId[]
+	projects: Types.ObjectId[]
 	password: string
 	accessToken: string
 };

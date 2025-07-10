@@ -9,7 +9,7 @@ export default model("accounts", new Schema<TAccount>({
 	avatar: {
 		type: String
 	},
-	codeHubs: {
+	projects: {
 		type: [Types.ObjectId],
 		ref: "projects"
 	},
@@ -19,4 +19,4 @@ export default model("accounts", new Schema<TAccount>({
 	password: {
 		type: String
 	}
-}))
+}, { timestamps: true }));

@@ -32,7 +32,8 @@ app.get("/project/all",     ...projectRoute.getAllProjects);
 app.post("/user/sign-up",             ...userRoute.signUp);
 app.post("/user/sign-in",             ...userRoute.signIn);
 app.get("/user/authorization",        ...userRoute.authorization);
-app.get("/user/refresh-access-token", ...userRoute.createAccessToken)
+app.get("/user/refresh-access-token", ...userRoute.createAccessToken);
+app.get("/user/:userId",              ...userRoute.getAccountById);
 
 app.use(_404_);
 

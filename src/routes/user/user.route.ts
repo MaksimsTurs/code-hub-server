@@ -11,6 +11,7 @@ import signUp from "./sign-up.route.js";
 import signIn from "./sign-in.route.js";
 import authorization from "./authorization.route.js";
 import refreshAccessToken from "./refresh-access-token.route.js";
+import getAccountById from "./get-account-by-id.route.js";
 
 const multipartParser: Multer = multer();
 
@@ -37,6 +38,11 @@ export default {
 	createAccessToken: [
 		logIncomingRequestData,
 		refreshAccessToken,
+		processCatchedError
+	],
+	getAccountById: [
+		logIncomingRequestData,
+		getAccountById,
 		processCatchedError
 	]
 } as const;

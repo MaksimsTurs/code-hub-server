@@ -1,10 +1,10 @@
-# New update v0.0.3
+# New update v0.0.4
 
 Changes:
-	Nothing.
+	- Naming in `account` model.
 
 Added:
-	Nothing.
+	- `getAccountById` route.
 
 Fixed:
-	- Imports.
+	- Nothing.
