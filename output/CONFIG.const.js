@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-const isDev = (process.env.CODE_HUB_MODE?.trim() || "prod") === "dev";
+const isDev = (process.env.CODE_HUB_MODE.trim() || "prod") === "dev";
 export default {
     IS_DEV: isDev,
     MODE: (process.env.CODE_HUB_MODE.trim() || "dev"),
