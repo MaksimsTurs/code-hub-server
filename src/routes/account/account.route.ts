@@ -6,7 +6,7 @@ import logIncomingRequestData from "../../middlewares/log-incoming-request-data.
 import processCatchedError from "../../middlewares/process-catched-error.middleware.js";
 import validateSignUpData from "../../middlewares/validate-sign-up-data.middleware.js";
 import validateSignInData from "../../middlewares/validate-sign-in-data.middleware.js";
-import validateNewAccountData from "@root/middlewares/validate-new-account-data.middleware.js";
+import validateNewAccountData from "../../middlewares/validate-new-account-data.middleware.js";
 import authenticate from "../../middlewares/authenticate.middleware.js";
 
 import signUp from "./sign-up.route.js";
