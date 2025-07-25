@@ -21,7 +21,7 @@ export default async function auth(request: Request, response: Response, next: N
 		throw new HandledAPIError(`JWT Refresh token "${rawRefreshToken}" is not valid!`, "You need to registrate or log in first!", NUMBER_CONST.HTTP_UNAUTHORIZED);
 	}
 
-	logger.in("dev").info(`Verifying refresh token "${rawRefreshToken}".`);
+	logger.in("dev", "prod").info(`Verifying refresh token "${rawRefreshToken}".`);
 	const [refreshToken, errorByVerifyingRefreshToken] = JWT.verifyToken<TJWTAccountToken>(rawRefreshToken, CONFIG_CONST.REFRESH_SECRET!);
 
 	if(errorByVerifyingRefreshToken) {
@@ -32,14 +32,14 @@ export default async function auth(request: Request, response: Response, next: N
 		throw new HandledAPIError(`"${refreshToken?._id}" is not valid object _id!`, "Incorrect id!", NUMBER_CONST.HTTP_BAD_REQUEST);
 	}
 	
-	logger.in("dev").info(`Getting account with _id "${refreshToken!._id}".`);
+	logger.in("dev", "prod").info(`Getting account with _id "${refreshToken!._id}".`);
 	const [account, errorByGettingAccountById] = await mongodb.query.getById(mongodb.models.Account, refreshToken!._id, { name: true, avatar: true });
 	
 	if(errorByGettingAccountById) {
 		return next(errorByGettingAccountById);
 	}
 
-	logger.in("dev").info("Creating new JWT access token.");
+	logger.in("dev", "prod").info("Creating new JWT access token.");
 	const [newAccessToken, errorByCreatingAccessToken] = JWT.createAccessToken({ _id: account!._id });
 
 	if(errorByCreatingAccessToken) {
