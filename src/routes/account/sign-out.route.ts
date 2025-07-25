@@ -9,6 +9,6 @@ import OBJECT_CONST from "../../OBJECT.const.js";
 export default async function signOut(request: Request, response: Response, _next: NextFunction): Promise<void> {
 	logger.in("dev", "prod").info(`Account with JWT Refresh token "${request.cookies[STRING_CONST.AUTH_REFRESH_TOKEN_KEY]}" sign out from the system.`);
 
-	response.cookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, "", OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
+	response.clearCookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
 	response.status(200).send(RESPONSE_CONST[200]());
 };

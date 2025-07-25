@@ -39,6 +39,6 @@ export default async function deleteAccount(request: Request, response: Response
 		return next(errorByDeletingAllAccountProjects);
 	}
 
-	response.cookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, "", OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
+	response.clearCookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
 	response.status(200).send(RESPONSE_CONST[200]());
 };
