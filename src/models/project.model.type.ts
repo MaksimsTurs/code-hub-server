@@ -5,8 +5,8 @@ export type TProject = {
 	name: string
 	description: string
 	visibility: EProjectVisibility
+	owner: Types.ObjectId
 	stars: Types.ObjectId[]
-	owners: Types.ObjectId[]
 	contributors: Types.ObjectId[]
 	createdAt: Date
 	updatedAt: Date

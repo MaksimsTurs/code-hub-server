@@ -15,7 +15,7 @@ export default async function (request, response, next) {
             description,
             visibility,
             contributors: [],
-            owners: [projectOwner._id],
+            owner: projectOwner._id,
             stars: []
         })).toJSON();
         return projectData;

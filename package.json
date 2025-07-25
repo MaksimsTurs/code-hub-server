@@ -1,10 +1,10 @@
 {
   "name": "code-hub-server",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "scripts": {
-		"dev": "nodemon",
-    "prod:build": "rm -r --force output && tsc --project tsconfig.json",
+    "dev": "nodemon",
+    "prod:build": "rm -r -f output && tsc --project tsconfig.json",
     "prod:start": "node --no-warnings --experimental-modules --es-module-specifier-resolution=node --loader ./MODULE_LOADER.mjs ./output/index.js"
   },
   "license": "ISC",
@@ -15,7 +15,7 @@
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/multer": "^2.0.0",
-    "@types/node": "^24.0.15",
+    "@types/node": "^24.1.0",
     "nodemon": "^3.1.10",
     "typescript": "^5.8.3"
   },
@@ -26,7 +26,7 @@
     "chalk": "^5.4.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.0",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "lz-string": "^1.5.0",

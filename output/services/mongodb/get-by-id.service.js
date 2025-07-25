@@ -6,10 +6,9 @@ export default async function getById(model, _id, projection, queryOptions) {
     return safeAsyncCall(async function () {
         _id = typeof _id === "string" ? new Types.ObjectId(_id) : _id;
         if (!isValidObjectId(_id)) {
-            throw new HandledAPIError(`${_id} is not valid "_id" value!`, "Id is not correct!", NUMBER_CONST.HTTP_BAD_REQUEST);
+            throw new HandledAPIError(`"${_id}" is not valid ObjectId!`, "Some data is incorrect!", NUMBER_CONST.HTTP_BAD_REQUEST);
         }
-        const account = (await model.findById(_id, projection, queryOptions))?.toJSON();
-        return account;
+        return (await model.findById(_id, projection, queryOptions))?.toJSON();
     });
 }
 ;

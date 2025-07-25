@@ -20,8 +20,8 @@ export default model(
 			type: [Types.ObjectId],
 			ref: "accounts"
 		},
-		owners: {
-			type: [Types.ObjectId],
+		owner: {
+			type: Types.ObjectId,
 			ref: "accounts"	
 		},
 		contributors: {

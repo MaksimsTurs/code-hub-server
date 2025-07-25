@@ -1,5 +1,5 @@
-
 import type { Request, Response, NextFunction } from "express";
+import type { TGetAccountByIdParams } from "./account.route.type.js";
 
 import mongodb from "../../services/mongodb/mongodb.service.js";
 
@@ -9,13 +9,29 @@ import HandledAPIError from "../../utils/Handled-API-Error.util.js";
 
 import NUMBER_CONST from "../../NUMBER.const.js";
 
-export default async function getAccountById(request: Request, response: Response, next: NextFunction): Promise<void> {
-	logger.in("dev").info(`Getting account with _id "${request.params.userId}"`);
+export default async function getAccountById(request: Request<TGetAccountByIdParams>, response: Response, next: NextFunction): Promise<void> {
+	logger.in("dev").info(`Getting account with _id "${request.params.userId}".`);
 	const [account, errorByGettingAccount] = await mongodb.query.getById(
-		mongodb.models.Account, 
-		request.params.userId, 
-		{ password: false, __v: false }, 
-		{ populate: { path: "projects", options: { projection: { __v: false }}}}
+		mongodb.models.Account,
+		request.params.userId,
+		{ 
+			password:  false,
+			createdAt: false,
+			updatedAt: false,
+			__v:       false 
+		}, 
+		{ 
+			populate: { 
+				path: "projects", 
+				options: { 
+					limit: 5,
+					projection: {
+						owner: false,
+						__v:   false,
+					}, 
+				}
+			}
+		}
 	);
 
 	if(errorByGettingAccount) {
@@ -23,7 +39,7 @@ export default async function getAccountById(request: Request, response: Respons
 	}
 
 	if(!account) {
-		throw new HandledAPIError(`Account with _id "${request.params.userId}" not exist`, "Account not found!", NUMBER_CONST.HTTP_NOT_FOUND);
+		throw new HandledAPIError(`Account with _id "${request.params.userId}" not exist!`, "Account not found!", NUMBER_CONST.HTTP_NOT_FOUND);
 	}
 
 	response.status(200).send(account);

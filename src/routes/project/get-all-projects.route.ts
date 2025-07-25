@@ -32,21 +32,19 @@ export default async function getAllProjects(request: Request, response: Respons
 	const [projects, errorByGettingProjects] = await safeAsyncCall(async function() {
 		const _id: Types.ObjectId = new Types.ObjectId(refreshToken?._id);
 
-		console.log(_id)
-
 		const filters = !_id ? 
 			{ visibility: "public" } :
 			{ 
 				$or: [
-					{ $and: [{ visibility: "public", owners: _id }] },
+					{ $and: [{ visibility: "public", owner: _id }] },
 					{ $and: [{ visibility: "protected", contributors: _id }] }, 
-					{ $and: [{ visibility: "protected", owners: _id }] },
-					{ $and: [{ visibility: "private", owners: _id }]}
+					{ $and: [{ visibility: "protected", owner: _id }] },
+					{ $and: [{ visibility: "private", owner: _id }]}
 				] 
 			};
 
 		logger.in("dev").info("Filters", filters);
-		return (await mongodb.models.Project.find(filters, { __v: false, owners: false, contributors: false, createdAt: false, updatedAt: false }));
+		return (await mongodb.models.Project.find(filters, { __v: false, owner: false, contributors: false, createdAt: false, updatedAt: false }));
 	});
 
 	if(errorByGettingProjects) {

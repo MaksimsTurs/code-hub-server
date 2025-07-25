@@ -23,7 +23,7 @@ export default async function(request: Request, response: Response, next: NextFu
 			description, 
 			visibility, 
 			contributors: [], 
-			owners: [projectOwner!._id], 
+			owner: projectOwner!._id, 
 			stars: [] 
 		})).toJSON();
 

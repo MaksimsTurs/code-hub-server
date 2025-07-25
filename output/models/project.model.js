@@ -13,8 +13,8 @@ export default model("projects", new Schema({
         type: [Types.ObjectId],
         ref: "accounts"
     },
-    owners: {
-        type: [Types.ObjectId],
+    owner: {
+        type: Types.ObjectId,
         ref: "accounts"
     },
     contributors: {

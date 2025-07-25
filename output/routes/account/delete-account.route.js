@@ -13,11 +13,18 @@ export default async function deleteAccount(request, response, next) {
         throw new HandledAPIError(`"${_id}" is not valid object _id!`, "Account not found!", NUMBER_CONST.HTTP_NOT_FOUND);
     }
     logger.in("dev", "prod").info(`Removing account with _id "${_id}".`);
-    const [_, errorByAccountDeleting] = await safeAsyncCall(async function () {
+    const [, errorByAccountDeleting] = await safeAsyncCall(async function () {
         await mongodb.models.Account.findByIdAndDelete(_id);
     });
     if (errorByAccountDeleting) {
         return next(errorByAccountDeleting);
+    }
+    logger.in("dev", "prod").info("Delete all account projects.");
+    const [, errorByDeletingAllAccountProjects] = await safeAsyncCall(async function () {
+        await mongodb.models.Project.deleteMany({ owner: _id });
+    });
+    if (errorByDeletingAllAccountProjects) {
+        return next(errorByDeletingAllAccountProjects);
     }
     response.cookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, "", OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
     response.status(200).send(RESPONSE_CONST[200]());

@@ -22,12 +22,21 @@ export default async function deleteAccount(request: Request, response: Response
 	}
 
 	logger.in("dev", "prod").info(`Removing account with _id "${_id}".`);
-	const [_, errorByAccountDeleting] = await safeAsyncCall(async function() {
+	const [, errorByAccountDeleting] = await safeAsyncCall(async function() {
 		await mongodb.models.Account.findByIdAndDelete(_id);
 	});
-
+	
 	if(errorByAccountDeleting) {
 		return next(errorByAccountDeleting);
+	}
+
+	logger.in("dev", "prod").info("Delete all account projects.");
+	const [, errorByDeletingAllAccountProjects] = await safeAsyncCall(async function() {
+		await mongodb.models.Project.deleteMany({ owner: _id });
+	});
+
+	if(errorByDeletingAllAccountProjects) {
+		return next(errorByDeletingAllAccountProjects);
 	}
 
 	response.cookie(STRING_CONST.AUTH_REFRESH_TOKEN_KEY, "", OBJECT_CONST.REFRESH_TOKEN_COOKIE_OPTIONS);
